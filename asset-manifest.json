@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/marita/static/css/main.073c9b0a.css",
+    "main.js": "/marita/static/js/main.01cfa993.js",
+    "static/js/787.42bbfe0c.chunk.js": "/marita/static/js/787.42bbfe0c.chunk.js",
+    "static/media/logo.svg": "/marita/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/marita/index.html",
+    "main.073c9b0a.css.map": "/marita/static/css/main.073c9b0a.css.map",
+    "main.01cfa993.js.map": "/marita/static/js/main.01cfa993.js.map",
+    "787.42bbfe0c.chunk.js.map": "/marita/static/js/787.42bbfe0c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.01cfa993.js"
+  ]
+}
