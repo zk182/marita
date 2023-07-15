@@ -1,23 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DenseTable from './components/table';
+import BasicButtons from './components/button';
+import { Container } from '@mui/material';
 
 function App() {
+  const show = true;
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Container>
+          <BasicButtons />
+          {show && <DenseTable />}
+        </Container>
       </header>
     </div>
   );
