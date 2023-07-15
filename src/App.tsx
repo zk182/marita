@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import DenseTable from './components/table';
+import DropZone from './components/dropZone';
 import { Container } from '@mui/material';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Container>{show && <DenseTable />}</Container>
+        <DropZone />
+        {/* <Container>{show && <DenseTable />}</Container> */}
       </header>
     </div>
   );
