@@ -2,6 +2,16 @@ import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Box from '@mui/material/Box';
 
+function exportUserInfo(data: any) {
+  const fileData = JSON.stringify(data);
+  const blob = new Blob([fileData], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.download = 'results.json';
+  link.href = url;
+  link.click();
+}
+
 export default function DropZone(props: any) {
   const onDrop = useCallback((acceptedFiles: any) => {
     acceptedFiles.forEach((file: any) => {
@@ -10,8 +20,23 @@ export default function DropZone(props: any) {
       reader.onabort = () => console.log('file reading was aborted');
       reader.onerror = () => console.log('file reading has failed');
       reader.onloadend = () => {
-        console.log('finished');
-        props.showData(text);
+        const results = text
+          .split('>')
+          .slice(1)
+          .filter((p) => {
+            const chars = p.split(/\r?\n/)[1];
+            let i = 0;
+            let g = 0;
+            for (const c of chars) {
+              if (c === 'g' || c === 'G') g++;
+              i++;
+            }
+            console.log(g, i);
+            console.log((g * 100) / i);
+            return (g * 100) / i > 8;
+          });
+        exportUserInfo(results);
+        props.showData(results);
       };
       reader.onload = (e: any) => {
         text = e.target.result;
@@ -26,7 +51,7 @@ export default function DropZone(props: any) {
         <Box component="span" sx={{ p: 15, border: '1px dashed grey' }}>
           <input {...getInputProps()} />
           <label>
-            <b>Choose a file</b> or drag it here. //{' '}
+            <b>Choose a file</b> or drag it here.
           </label>
         </Box>
       </div>

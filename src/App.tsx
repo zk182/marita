@@ -1,29 +1,33 @@
 import { useState } from 'react';
 import './App.css';
-import DenseTable from './components/table';
 import DropZone from './components/dropZone';
-import { Container } from '@mui/material';
+import { Container, TextField } from '@mui/material';
 
 function App() {
-  const [showDrop, setShowDrop] = useState(true);
   const [data, setData] = useState('');
+  const [perc, setPerc] = useState(8);
+
+  function dataHandler(d: string) {
+    setData(d);
+  }
+
+  function handleTextChange(e: any) {
+    setPerc(e.target.value);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        {showDrop && (
-          <DropZone
-            showData={(d: string) => {
-              setData(d);
-              setShowDrop(false);
-            }}
+        <DropZone showData={dataHandler} />
+        {/* <Container>
+          <TextField
+            id="outlined-basic"
+            label="% of G/g"
+            variant="outlined"
+            value={perc}
+            onChange={handleTextChange}
           />
-        )}
-        {!showDrop && (
-          <Container>
-            <DenseTable />
-          </Container>
-        )}
+        </Container> */}
       </header>
     </div>
   );
