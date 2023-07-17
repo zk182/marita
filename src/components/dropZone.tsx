@@ -2,12 +2,11 @@ import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Box from '@mui/material/Box';
 
-function exportUserInfo(data: any) {
-  const fileData = JSON.stringify(data);
-  const blob = new Blob([fileData], { type: 'text/plain' });
+function exportResult(data: any) {
+  const blob = new Blob([data], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
-  link.download = 'results.json';
+  link.download = 'results.txt';
   link.href = url;
   link.click();
 }
@@ -31,11 +30,9 @@ export default function DropZone(props: any) {
               if (c === 'g' || c === 'G') g++;
               i++;
             }
-            console.log(g, i);
-            console.log((g * 100) / i);
             return (g * 100) / i > 8;
           });
-        exportUserInfo(results);
+        exportResult(results);
         props.showData(results);
       };
       reader.onload = (e: any) => {
