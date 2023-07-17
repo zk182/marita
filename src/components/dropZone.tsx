@@ -32,7 +32,8 @@ export default function DropZone(props: any) {
             }
             return (g * 100) / i > 8;
           });
-        exportResult(results);
+        let reJoinResults = '>' + results.slice(0, 10).join('>');
+        exportResult(reJoinResults);
         props.showData(results);
       };
       reader.onload = (e: any) => {
